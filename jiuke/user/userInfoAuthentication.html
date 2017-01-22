@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九科教育</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body ms-controller="init">
+		<div class="body">
+			<h4>用户认证</h4>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">用户真实姓名</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@userRealName" placeholder="必填" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-2 control-label">用户身份证号</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@userIdCardno" placeholder="必填" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">上传身份证正面</label>
+			    <div class="col-sm-3">
+			    	<button type="button" onclick="userFrontCardpic.click()" class="btn btn-default span-top-lg span-btn">+选择文件</button>
+			    	<input type="file" id="userFrontCardpic" class="file" />
+			    	<img class="img-id" ms-attr="{src:@userFrontCardpic}" />
+			    </div>
+			    <div class="col-sm-7">
+			    	<span class="span-top-lg">示例</span>
+			    	<img class="img-id-big" src="../img/img1.png"/>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">上传身份证反面</label>
+			    <div class="col-sm-3">
+			    	<button type="button" onclick="userVersoCardpic.click()" class="btn btn-default span-top-lg span-btn">+选择文件</button>
+			    	<input type="file" id="userVersoCardpic" class="file" />
+			    	<img class="img-id" ms-attr="{src:@userVersoCardpic}" />
+			    </div>
+			    <div class="col-sm-7">
+			    	<span class="span-top-lg">示例</span>
+			    	<img class="img-id-big" src="../img/img1.png"/>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">上传资质证书</label>
+			    <div class="col-sm-3">
+			    	<button type="button" onclick="certJsonStr1.click()" class="btn btn-default span-top-lg span-btn">+选择文件</button>
+			    	<input type="file" id="certJsonStr1" class="file" />
+			    	<img class="img-id" ms-attr="{src:@certJsonStr1}" />
+			    </div>
+			   <div class="col-sm-3">
+			    	<button type="button" onclick="certJsonStr2.click()" class="btn btn-default span-top-lg span-btn">+选择文件</button>
+			    	<input type="file" id="certJsonStr2" class="file" />
+			    	<img class="img-id" ms-attr="{src:@certJsonStr2}" />
+			    </div>
+			    <div class="col-sm-3">
+			    	<button type="button" onclick="certJsonStr3.click()" class="btn btn-default span-top-lg span-btn">+选择文件</button>
+			    	<input type="file" id="certJsonStr3" class="file" />
+			    	<img class="img-id" ms-attr="{src:@certJsonStr3}" />
+			    </div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-4 col-sm-8">
+			    	<button type="button" ms-click="@save" class="btn btn-default btn-danger">保存</button>
+			    </div>
+			</div>
+		</div>
+		<script src="../js/require.js" data-main="js/userInfoAuthentication"></script>
+	</body>
+</html>

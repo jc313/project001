@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九科育英</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body ms-controller="init" class="ms-controller">
+		<header>
+			<ul class="float-left">
+				<li class="pointer" :visible="@hide1" data-toggle="modal" data-target="#login">登录</li>
+				<li class="pointer" :visible="@hide1" data-toggle="modal" data-target="#register">注册</li>
+				<li class="pointer" :visible="@hide2">您好,{{@userName}}</li>
+				<li class="pointer" :visible="@hide2" ms-click="@loginOut">登出</li>
+			</ul>
+			<ul class="float-right">
+				<li class="pointer" :visible="@hide2" ms-click="@userInfo">个人中心</li>
+			</ul>
+		</header>
+		<div class="main_part_box1 bac1">
+			<div class="main-container">
+				<div class="main-contant">
+					<div class="search-module">
+						<div class="pic"><img src="../img/logo.png"/></div>
+						<div class="search">
+							<div class="input-group">
+						      	<div class="input-group-btn">
+							        <button type="button" class="btns dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							        	<span ms-text="@searchType">课程</span>
+							        	<span class="caret"></span>
+							        </button>
+							        <ul class="dropdown-menu">
+							          <li><a href="javascript:;" ms-click="@searchTypeChange('课程')">课程</a></li>
+							          <li><a href="javascript:;" ms-click="@searchTypeChange('教师')">教师</a></li>
+							        </ul>
+						      	</div>
+						      	<input type="text" class="form-con" placeholder="请输入你要搜索的内容" ms-duplex="@searchText">
+						      	<div class="input-group-btn">
+	        						<button type="button" class="btns-block dropdown-toggle" ms-click="@search">搜索</button>
+	      						</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sortitle-module">
+			<ul id="ul">
+				<li class="sort" ms-click="@tab('../pc/index.html')">首页</li>
+				<li class="sort" ms-click="@tab('../pc/tabOne.html')">外教老师</li>
+				<li class="sort" ms-click="@tab('../pc/tabTwo.html')">扩张课程</li>
+				<li class="sort active" ms-click="@tab('../pc/tabThree.html')">精品课程</li>
+				<li class="sort" ms-click="@tab('../pc/tabFour.html')">新闻中心</li>
+				<li class="sort" ms-click="@tab('../pc/tabFive.html')">联系我们</li>
+			</ul>
+		</div>
+		<!--热推讲师-->
+		<div class="detail-top">
+			<div class="detail-top-img">
+				<img class="class-img" onerror="../img/img1.png" ms-attr="{src:@pic}" />
+			</div>
+			<div class="detail-top-title">
+				<h3>{{@courseName}}</h3>
+				<p>
+					<!--<span class="glyphicon glyphicon-star-empty"></span>-->
+					<!--<span class="glyphicon glyphicon-star-empty"></span>-->
+					<!--<span class="glyphicon glyphicon-star-empty"></span>-->
+					<!--<span class="font-comment">(124品评论)</span>-->
+				</p>
+				<p>价格<span class="font-price">{{@price}}</span></p>
+			</div>
+			<div class="detail-top-other">
+				<div class="time">
+					<h3>{{@courseHourNum}}</h3>
+				</div>
+				<div class="social">
+					<img src="../img/share.png" />
+				</div>
+				<div class="join">
+					<button class="btn btn-danger" ms-click="@saveUserCourse">{{@joinText}}</button>
+				</div>
+			</div>
+		</div>
+		<div class="detial-bottom">
+			<div class="detial-bottom-introduce">
+				<div class="introduce-title">
+					<span class="introduce-title-one" :class="@type1" ms-click="@introduceType(1)">课程概览</span>
+					<span class="introduce-title-two" :class="@type2" ms-click="@introduceType(2)">课时列表</span>
+					<span class="introduce-title-three" :class="@type3" ms-click="@introduceType(3)">评论</span>
+				</div>
+				<div class="type1" :visible="@hide3">
+					<p><span class="type1Title">学习对象</span></p>
+					<div class="type1Body" ms-text="@studyObejct"></div>
+					<p><span class="type1Title">课程介绍</span></p>
+					<div class="type1Body" ms-html="@courseIntro"></div>
+				</div>
+				<div class="type2" :visible="@hide4">
+					<ul>
+						<li ms-for="el in @courseTimeList">
+							<span class="type2Title1">课时{{el.number}}：</span>
+							<span class="type2Title2">{{el.courseTitle}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="type3">
+					<ul :visible="@hide5">
+						<li ms-for="el in @queryCourseCommentList">
+							<span class="type3Title1">{{el.userName}}</span><span class="type3Title2">{{el.createTime}}</span>
+							<p class="type3Title3">{{el.courseComment}}</p>
+						</li>
+					</ul>
+					<nav :visible="@hide6">
+						<ul class="pagination pagination-sm">
+					    	<li ms-for="el in @paginationList" :class="el.active" ms-click="@pages(el.start,el.page)">
+					    		<a :class="el.active" href="javascript:;">{{el.page}}</a>
+					    	</li>
+				  		</ul>
+					</nav>
+					<textarea :visible="@hide7" class="form-control1" rows="5" ms-duplex="@courseComment" placeholder="评论..."></textarea>
+					<button :visible="@hide7" class="btn btn-danger saveCourseComments" ms-click="@saveCourseComments">发布</button>
+				</div>
+			</div>
+			<div class="detial-bottom-menbers">
+				<div class="members-title">
+					<span class="members-title-one">授课教师</span>
+				</div>
+				<div class="members-teacher">
+					<img class="teacher-img" onerror="../img/head.png" ms-attr="{src:@headUrl}" />
+					<div class="teacher-info">
+						<span class="teacher-name">{{@name}}</span>
+						<span class="teacher-level">{{@position}}</span>
+					</div>
+				</div>
+				<div class="members-title">
+					<span class="members-title-one">师资介绍</span>
+				</div>
+				<p class="members-title-introduce">{{@cnIntroduce}}</p>
+			</div>
+		</div>
+		<!-- login register Modal -->
+		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">登录</h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	<input type="text" class="form-control" ms-duplex="@loginName" placeholder="用户名">
+			        	<hr />
+			        	<input type="password" class="form-control" ms-duplex="@password" placeholder="密码">
+			     	</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-block btn-primary" ms-click="@login">登录</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">注册</h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	<input type="text" class="form-control" ms-duplex="@loginName" placeholder="手机号">
+			        	<hr />
+			        	<input type="password" class="form-control" ms-duplex="@password" placeholder="密码(不少于6位)">
+			        	<hr />
+			        	<input type="text" class="form-control from-code" ms-duplex="@verificationCode" placeholder="验证码">
+			        	<button class="btn btn-default" ms-text="@code" ms-click="@send()"></button>
+			     	</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-block btn-primary" ms-click="@register">注册</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<iframe width="100%" style="border-top: 2px solid #ededed;" height="260px" src="../public/foot.html" seamless frameborder="0" scrolling="no"></iframe>
+		<script src="../js/require.js" data-main="js/excellentDetail"></script>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"4","bdPos":"right","bdTop":"100"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+	</body>
+</html>

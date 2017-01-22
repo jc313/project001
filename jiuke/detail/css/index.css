@@ -1,0 +1,322 @@
+	.ms-controller{visibility: hidden}
+	.detail-top{
+		margin: 15px auto;
+		width: 1200px;
+		height: 260px;
+		display: table;
+		clear: both;
+		content: '';
+	}
+	.detail-top1{
+		margin: 15px auto;
+		width: 1200px;
+		height: auto;
+		display: table;
+		clear: both;
+		content: '';
+	}
+	.detail-top-img{
+		width: 40%;
+		height: 100%;
+		float: left;
+	}
+	.detail-top-img1{
+		width: 25%;
+		height: 100%;
+		float: left;
+	}
+	.class-img{width: 100%;height: 265px;}
+	.class-img1{width: 100%;height: 200px;}
+	.detail-top-title{
+		padding: 0 20px 0 30px;
+		width: 40%;
+		height: 100%;
+		float: left;
+	}
+	.detail-top-title2{
+		padding: 0 20px 0 30px;
+		width: 40%;
+		height: 100%;
+		min-height: 400px;
+		float: left;
+	}
+	.detail-top-title2 h4{font-size: 16px;line-height: 25px;}
+	.detail-top-title1{
+		padding: 0 20px 0 30px;
+		width: 75%;
+		height: 100%;
+		float: left;
+	}
+	.detail-top-title1 h4{font-size: 16px;line-height: 20px;}
+	.detail-top-other{
+		width: 20%;
+		height: 280px;
+		float: left;
+		background: #F0EBE8;
+		padding: 20px;
+	}
+	.time{
+		height: 20%;
+		border-bottom: 1px solid #CDCDCD;
+		text-align: center;
+	}
+	.social{
+		height: 40%;
+		border-bottom: 1px solid #CDCDCD;
+	}
+	.social img{margin: 0 auto;max-width: 100%;display: block;margin-top: 10px;}
+	.join{
+		height: 40%;
+		padding-top:25px;
+		text-align: center;
+	}
+	.detial-bottom{
+		margin: 0 auto;
+		width: 1200px;
+		min-height: 560px;
+		display: table;
+		clear: both;
+		content: '';
+	}
+	.detial-bottom-introduce{
+		width: 80%;
+		height: 100%;
+		float: left;
+		padding: 20px;
+	}
+	.detial-bottom-menbers{
+		width: 20%;
+		height: 100%;
+		float: left;
+		padding: 20px;
+	}
+	.introduce-title{
+		border-bottom: 1px solid #D5D5D5;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.members-title{
+		border-bottom: 1px solid #D5D5D5;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.introduce-title-one{
+		padding: 2px 6px;
+		line-height: 30px;
+		cursor: pointer;
+		display: inline-block;
+		margin: 0 15px 0 0;
+	}
+	.introduce-title-two{
+		padding: 2px 6px;
+		line-height: 30px;
+		cursor: pointer;
+		display: inline-block;
+		margin: 0 15px 0 0;
+	}
+	.introduce-title-three{
+		padding: 2px 6px;
+		line-height: 30px;
+		cursor: pointer;
+		display: inline-block;
+		margin: 0 15px 0 0;
+	}
+	.active1{color:#F94F36;border-bottom:2px solid #F94F36}
+	.active{background-color:#f94f36 !important;border: 0px solid #f94f36 !important;}
+	.members-title-one{
+		padding: 3px 6px;
+		line-height: 30px;
+		display: inline-block;
+		margin: 0 15px 0 0;
+	}
+	.members-title-introduce{
+		font-size: 14px;
+		padding: 10px;
+	}
+	.members-teacher{
+		padding: 30px 0 0 0 ;
+		display: table;
+		clear: both;
+		content: '';
+		margin: 0 0 30px 0;
+	}
+	.teacher-img{
+		width: 68px;
+		height: 68px;
+		border-radius: 50%;
+		display: block;
+		float: left;
+		margin: 0 15px 0 0;
+	}
+	.teacher-info{
+		float: left;
+	}
+	.teacher-name{
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+		margin-top: 8px;
+	}
+	.teacher-level{
+		display: block;
+		line-height: 25px;
+	}
+	.font-price{color: #F94F36;font-weight: bold; font-size: 25px;margin-left: 10px;}
+	.glyphicon-star-empty{color:#8C8C8C;}
+	.font-comment{color: #8C8C8C;margin-left: 10px;}
+	
+	.type1,.type2,.type3{
+		width: 100%;height:auto;
+		padding: 10px 10px;
+	}
+	.type2 ul{padding:10px}
+	.type2 ul li{list-style: circle;font-size: 20px;}
+	.type3 ul{padding:10px}
+	.type3 ul li{list-style: none;font-size: 20px;}
+	.type1Title{
+		border-left: 3px solid #F94F36 ;
+		display: inline-block;
+		padding: 0 16px;
+		font-size: 15px;
+		font-weight: bold;
+		line-height: 15px;
+	}
+	.type2Title1{
+		display: inline-block;
+		font-size: 15px;
+		margin-right: 30px;
+	}
+	.type2Title2{
+		display: inline-block;
+		font-size: 15px;
+	}
+	.type3Title1{
+		display: inline-block;
+		font-size: 16px;
+		font-weight: bold;
+		margin-right: 40px;
+	}
+	.type3Title2{
+		display: inline-block;
+		font-size: 13px;
+		color: #B5B5B5;
+	}
+	.type3Title3{
+		font-size: 14px;
+		border-bottom: 1px solid #D5D5D5;
+		margin: 5px 0 0 0;
+		padding: 10px 0;
+	}
+	.type1Body{
+		width: 100%;
+		min-height: 50px;
+		margin: 10px 0;
+	}
+	.form-control1 {
+	    display: block;
+	    width: 100%;
+	    height: 120px;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    color: #555;
+	    background-color: #fff;
+	    background-image: none;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	}
+	 .form-control1:focus{border: 1px solid #fff;}
+	.saveCourseComments{margin-top: 15px;}
+	.courseContent{min-height: 350px;}
+		.zx {
+		    width: 100px;
+		    position: fixed;
+		    right: 0;
+		    bottom: 200px;
+		    z-index: 99999;
+		}
+		.zx a {
+	    	text-decoration: none;
+	    	outline: none;
+		}
+	
+		.zx ul{
+			list-style: none;
+	    	vertical-align: top;
+		}
+		.zx li.li_c {
+		    position: relative;
+		    z-index: 99999;
+		}
+		.zx li {
+		    width: 52px;
+		    height: 52px;
+		    border: 1px solid #D2D2D2;
+		    margin-bottom: -1px;
+		}
+		.zx li.li_gd span.txt_s {
+		    display: block;
+		   
+		}
+		.zx li span.txt_s {
+		    height: 46px;
+		    background: #242424;
+		    font-size: 14px;
+		    text-align: center;
+		    line-height: 18px;
+		    color: #fff;
+		    padding-top: 7px;
+		}
+		.zx li span {
+		    display: block;
+		    width: 52px;
+		    height: 52px;
+		}
+		.zx li:hover span.icon_s {
+		   	 display: none;
+		     cursor: pointer;
+		}
+		
+		.zx li span.icon_s {
+		    background: #D72502 url(http://www.itheima.com/wp-content/themes/heima/images/zx_bg.png) no-repeat 0 0;
+		}
+		.zx li.li2 span.icon_s {
+		    background-position: 0 -53px;
+		}
+		.zx li.li_c div {
+		    position: absolute;
+		    left: -96px;
+		    top: 2px;
+		    background: #fff;
+		    border: 1px solid #D2D2D2;
+		    padding: 10px;
+		    display: none;
+		}
+		.zx li.li_c div a {
+		    display: block;
+		    font-size: 12px;
+		    line-height: 22px;
+		    height: 22px;
+		    background: url(http://www.itheima.com/wp-content/themes/heima/images/online.jpg) no-repeat;
+		    color: #333;
+		    padding-left: 25px;
+		}
+		.zx li.li2 div {
+		    left: -128px;
+		    width: 128px;
+		}
+		.zx li.li2 div a.n4 {
+		    background-position: left -72px;
+		}
+		.zx li.li2 div a {
+		    background: url(http://www.itheima.com/wp-content/themes/heima/images/city.png) no-repeat left 0;
+		    height: 19px;
+		    line-height: 19px;
+		}
+
+
+

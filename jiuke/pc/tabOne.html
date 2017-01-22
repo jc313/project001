@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九科育英</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/fonts.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body ms-controller="init" class="ms-controller">
+		<header>
+			<ul class="float-left">
+				<li class="pointer" :visible="@hide1" data-toggle="modal" data-target="#login">登录</li>
+				<li class="pointer" :visible="@hide1" data-toggle="modal" data-target="#register">注册</li>
+				<li class="pointer" :visible="@hide2">您好,{{@userName}}</li>
+				<li class="pointer" :visible="@hide2" ms-click="@loginOut">登出</li>
+			</ul>
+			<ul class="float-right">
+				<li class="pointer" :visible="@hide2" ms-click="@userInfo">个人中心</li>
+			</ul>
+		</header>
+		<div class="main_part_box1 bac1">
+			<div class="main-container">
+				<div class="main-contant">
+					<div class="search-module">
+						<div class="pic"><img src="../img/logo.png"/></div>
+						<div class="search">
+							<div class="input-group">
+						      	<div class="input-group-btn">
+							        <button type="button" class="btns dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							        	<span ms-text="@searchType">课程</span>
+							        	<span class="caret"></span>
+							        </button>
+							        <ul class="dropdown-menu">
+							          <li><a href="javascript:;" ms-click="@searchTypeChange('课程')">课程</a></li>
+							          <li><a href="javascript:;" ms-click="@searchTypeChange('教师')">教师</a></li>
+							        </ul>
+						      	</div>
+						      	<input type="text" class="form-con" placeholder="请输入你要搜索的内容" ms-duplex="@searchText">
+						      	<div class="input-group-btn">
+	        						<button type="button" class="btns-block dropdown-toggle" ms-click="@search">搜索</button>
+	      						</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sortitle-module">
+			<ul id="ul">
+				<li class="sort" ms-click="@tab('index.html')">首页</li>
+				<li class="sort actives" ms-click="@tab('tabOne.html')">外教老师</li>
+				<li class="sort" ms-click="@tab('tabTwo.html')">拓展课程</li>
+				<li class="sort" ms-click="@tab('tabThree.html')">精品课程</li>
+				<li class="sort" ms-click="@tab('tabFour.html')">新闻中心</li>
+				<li class="sort" ms-click="@tab('tabFive.html')">联系我们</li>
+			</ul>
+		</div>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  </ol>
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		      <img src="../img/banner1.png" alt="...">
+		      <div class="carousel-caption">
+		      </div>
+		    </div>
+		    <div class="item">
+		      <img src="../img/banner2.png" alt="...">
+		      <div class="carousel-caption">
+		      </div>
+		    </div>
+		    <div class="item">
+		      <img src="../img/banner3.png" alt="...">
+		      <div class="carousel-caption">
+		      </div>
+		    </div>
+		  </div>
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		    <span class="glyphicon"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		    <span class="glyphicon"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+		<div class="sort-module">
+			<ul class="main_part_block">
+				<li class="main_part_smargin main_part_b1" ms-for="el in @list" ms-click="@detail(el.sid)">
+					<div class="img_hidden main_part_img1">
+						<img ms-attr="{src:el.src}" onerror="this.src='../img/head.png'" />
+					</div>
+					<div class="p1">
+						<span class="font1" ms-text="el.name"></span>
+						<span class="font2" ms-text="el.achieve"></span>
+						<span class="font3" ms-text="el.officeUnit"></span>
+					</div>
+					<p class="p2" ms-text="el.cnIntroduce"></p>
+				</li>
+			</ul>
+		</div>
+		<div class="sort-module" :visible="@hide3">
+			<nav>
+				<ul class="pagination">
+				    <li ms-for="el in @paginationList" :class="el.active" ms-click="@pages(el.start,el.page)">
+				    	<a :class="el.active" href="javascript:;">{{el.page}}</a>
+				    </li>
+			  	</ul>
+			</nav>
+		</div>
+		<!-- login register Modal -->
+		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">登录</h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	<input type="text" class="form-control" ms-duplex="@loginName" placeholder="用户名">
+			        	<hr />
+			        	<input type="password" class="form-control" ms-duplex="@password" placeholder="密码">
+			     	</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-block btn-primary" ms-click="@login">登录</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">注册</h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	<input type="text" class="form-control" ms-duplex="@loginName" placeholder="手机号">
+			        	<hr />
+			        	<input type="password" class="form-control" ms-duplex="@password" placeholder="密码(不少于6位)">
+			        	<hr />
+			        	<input type="text" class="form-control from-code" ms-duplex="@verificationCode" placeholder="验证码">
+			        	<button class="btn btn-default" ms-text="@code" ms-click="@send()"></button>
+			     	</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-block btn-primary" ms-click="@register">注册</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<div class="zx">
+			<ul>
+				<li class="li1 li_c li_gd">
+					<span class="txt_s">
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" target="_blank" class="yxzx" style="color:#fff;">
+							在线<br/>咨询
+						</a>
+					</span>
+				</li>
+				<li class="li1 li_c" ms-mouseover="@hove1" ms-mouseout="@out1">
+					<span class="icon_s"></span>
+					<span :visible="@zxhide1" class="txt_s">Q&nbsp;Q<br>咨询</span>
+					<div :visible="@zxhide1">
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" class="yxzx" target="_blank">在线咨询</a>
+					</div>
+				</li>
+				<li class="li2 li_c" ms-mouseover="@hove2" ms-mouseout="@out2">
+					<span class="icon_s"></span>
+					<span :visible="@zxhide2" class="txt_s">电话<br>咨询</span>	
+					<div :visible="@zxhide2">
+						<a href="javascript:void(0);" class="n4">010-53366659</a>			
+					</div>			
+				</li>
+			</ul>
+		</div>
+		<!--<script language="javascript" src="http://api.pop800.com/800.js?n=259694&s=01&p=l&l=cn"></script>
+		<div style="display:none;"><a href="http://www.pop800.com">在线客服</a></div>-->
+		<iframe width="100%" style="border-top: 2px solid #ededed;" height="260px" src="../public/foot.html" seamless frameborder="0" scrolling="no"></iframe>
+		<script src="../js/require.js" data-main="js/tabOne"></script>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"4","bdPos":"right","bdTop":"100"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+	</body>
+</html>

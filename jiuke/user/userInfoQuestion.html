@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九科教育</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+	</head>
+	<style type="text/css">
+		html, body {
+		    background-color: #f9f9f9;
+		    width: 900px;
+		}
+		ul{margin: 0;}
+		.part_block {
+		    width: 920px;
+		    overflow: auto;
+   	 		height: auto;
+		}
+		.main_part_b2 {
+		    width: 208px;
+		    margin-top: 20px;
+		    float: left;
+		    border: 1px solid #ececec;
+		    background-color: #ffffff;
+		    margin-right: 10px;
+		    border-bottom: 2px solid #ececec;
+		    cursor: pointer;
+		    list-style: none;
+		}
+	</style>
+	<body ms-controller="init">
+		<div class="body">
+			<h4>我的发布</h4>
+			<div class="que-type">
+				<span id="span1" class=" active2" ms-click="@type(1)">待审核</span>
+				<span id="span2" ms-click="@type(2)">审核通过</span>
+				<span id="span3" ms-click="@type(3)">审核失败</span>
+			</div>
+			<ul class="part_block">
+				<li class="main_part_smargin main_part_b2" ms-for="el in @list" ms-click="@detail(el.sid,el.type)">
+					<div class="img_hidden main_part_img2">
+						<img ms-attr="{src:el.src}" onerror="this.src='../img/img1.png'" >
+					</div>
+					<p class="title" ms-text="el.courseName"></p>
+					<p class="title1" ms-text="el.courseTeacher"></p>
+					<div class="">
+						<button ms-click="@edit(el.sid,el.module)" class="btn btn-default btn-success span-left">编辑</button>
+						<button ms-click="@del(el.sid,el.module)"  class="btn btn-default btn-danger span-right">删除</button>
+					</div>
+				</li>
+			</ul>
+			<nav :visible="@hide3" style="text-align: center;width: 900px;">
+				<ul class="pagination">
+				    <li ms-for="el in @paginationList" :class="el.active" ms-click="@pages(el.start,el.page)">
+				    	<a :class="el.active" href="javascript:;">{{el.page}}</a>
+				    </li>
+			  	</ul>
+			</nav>
+		</div>
+		<script src="../js/require.js" data-main="js/userInfoQuestion"></script>
+	</body>
+</html>

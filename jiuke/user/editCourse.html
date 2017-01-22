@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九科教育</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../wangEditor/dist/css/wangEditor.min.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body ms-controller="init">
+		<div class="body">
+			<h4>发布课程</h4>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-2 control-label">课程分类</label>
+			    <div class="col-sm-10">
+			    	<select class="form-control" :duplex="@causeType" disabled>
+					  	<option>精品课程</option>
+					  	<option>拓展课程</option>
+			    	</select>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">课程标题</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@courseName" placeholder="必填" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">主讲教师</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@courseTeacher" placeholder="必填" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">专家介绍</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@teacherIntroduce" placeholder="必填" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-2 control-label">课程简介</label>
+			    <div class="col-sm-10">
+			    	 <div id="editor-trigger"></div>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-2 control-label">课程售价</label>
+			    <div class="col-sm-10 span-top-lg">
+			    	<label class="radio-inline">
+				  		<input type="radio" name="inlineRadioOptions" value="0" ms-duplex="@isFree">
+				  		<input type="text" ms-duplex="@price" placeholder="单位/元">
+					</label>
+					<label class="radio-inline">
+				  		<input type="radio" name="inlineRadioOptions" value="1" ms-duplex="@isFree">
+				  		免费
+					</label>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-2 control-label">上传课程封面</label>
+			    <div class="col-sm-2">
+			    	<button type="button" onclick="file.click()" class="btn btn-default span-top-lg span-btn">+选择文件</button>
+			    	<input type="file" id="file" class="file" />
+			    </div>
+			    <div class="col-sm-8">
+			    	<img class="img-id" id="imgClass" ms-attr="{src:@src}"  src="../img/img1.png"/>
+			    </div>
+			</div>
+			<!--show1-->
+			<div class="form-group from-group-authentication" :visible="@show1">
+			    <label class="col-sm-2 control-label">热门课程</label>
+			    <div class="col-sm-10 span-top-lg">
+			    	<label class="radio-inline">
+				  		<input type="radio" value="1" name="isHot" ms-duplex="@isHot" />
+				  		热门
+					</label>
+					<label class="radio-inline">
+				  		<input type="radio" value="0" name="isHot" ms-duplex="@isHot" />
+				  		非热门
+					</label>
+				</div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show1">
+			    <label class="col-sm-2 control-label">学习对象</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@studyObejct" placeholder="" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show1"> 
+			    <label for="inputPassword3" class="col-sm-2 control-label">课时数</label>
+			    <div class="col-sm-10">
+			    	<select class="form-control" :duplex="@courseHourNum">
+					  	<option>1</option>
+					  	<option>2</option>
+					  	<option>3</option>
+					  	<option>4</option>
+					  	<option>5</option>
+					  	<option>6</option>
+					  	<option>7</option>
+					  	<option>8</option>
+					  	<option>9</option>
+					  	<option>10</option>
+					  	<option>11</option>
+					  	<option>12</option>
+					  	<option>13</option>
+					  	<option>14</option>
+					  	<option>15</option>
+					  	<option>16</option>
+					</select>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show1">
+			    <label class="col-sm-2 control-label">课时节数</label>
+			    <label class="col-sm-4 control-label">课时标题</label>
+			    <label class="col-sm-4 control-label">视频地址</label>
+			    <label class="col-sm-2 control-label">课时长度</label>
+			</div>
+			<div class="form-group from-group-authentication" ms-for="el in @classList" :visible="@show1">
+			    <label class="col-sm-2 control-label" ms-text="el.classNumber"></label>
+			    <div class="col-sm-4">
+			    	<input type="text" class="form-control courseTitle" placeholder="必填" ms-duplex="el.courseTitle"  />
+			    </div>
+			    <div class="col-sm-4">
+			    	<input type="text" class="form-control courseMins" placeholder="必填"  ms-duplex="el.courseMinsel" />
+			    </div>
+			    <div class="col-sm-2">
+			    	<input type="text" class="form-control courseUrl" placeholder="必填" ms-duplex="el.courseUrl" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show1">
+			    <label class="col-sm-2 control-label"></label>
+			    <div class="col-sm-2">
+			    	<button type="button" ms-click="@removeClass" class="btn btn-default btn-danger">-删除课节</button>
+			    </div>
+			    <div class="col-sm-2">
+			    	<button type="button" ms-click="@addClass" class="btn btn-default btn-danger">+新增课节</button>
+			    </div>
+			</div>
+			<!--show2-->
+			<div class="form-group from-group-authentication" :visible="@show2">
+			    <label class="col-sm-2 control-label">授课语言</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@courseLanguage" placeholder="" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show2">
+			    <label class="col-sm-2 control-label">培训目的</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@coursePurpose" placeholder="" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show2">
+			    <label class="col-sm-2 control-label">培训提纲</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@courseOutline" placeholder="" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show2">
+			    <label class="col-sm-2 control-label">开课城市</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@openCourseCity" placeholder="" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication" :visible="@show2">
+			    <label class="col-sm-2 control-label">开课时间</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" ms-duplex="@openCourseTime" placeholder="" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <div class="col-sm-offset-2 col-sm-10">
+			    	<button type="button" ms-click="@save" class="btn btn-default btn-block btn-danger">保存</button>
+			    </div>
+			</div>
+		</div>
+		<script src="../js/require.js" data-main="js/editCourse"></script>
+	</body>
+</html>

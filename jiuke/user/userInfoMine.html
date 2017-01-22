@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九科教育</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body ms-controller="init">
+		
+		<div class="body">
+			<h4>基本资料</h4>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-3 control-label">头像</label>
+			    <div class="col-sm-2">
+			    	<img class="img-header" ms-attr="{src:@userHead}" />
+			    </div>
+			    <div class="col-sm-7">
+			    	<span class="span-top">支持jpg,gif,png或bmp格式的图片，必须小于1M</span>
+			    	<span class="span-bottom" onclick="file.click()">上传头像</span>
+			    	<input type="file" id="file" class="file" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-3 control-label">昵称</label>
+			    <div class="col-sm-9">
+			    	<input type="text" class="form-control" ms-duplex="@userName" placeholder="必填" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-3 control-label">简介</label>
+			    <div class="col-sm-9">
+			    	<input type="text" class="form-control" ms-duplex="@userInfo" placeholder="介绍你自己" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label class="col-sm-3 control-label">教师类型</label>
+			    <div class="col-sm-9 span-top-lg">
+			    	<label class="radio-inline">
+				  		<input type="radio" value="2" name="isHot" ms-duplex="@teacherType" ms-attr="{disabled:@disabled}" />
+				  		中文
+					</label>
+					<label class="radio-inline">
+				  		<input type="radio" value="1" name="isHot" ms-duplex="@teacherType" ms-attr="{disabled:@disabled}" />
+				  		外教
+					</label>
+				</div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-3 control-label">职称</label>
+			    <div class="col-sm-9">
+			    	<input type="text" class="form-control" ms-duplex="@position" placeholder="" ms-attr="{disabled:@disabled}" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-3 control-label">任职学校/公司</label>
+			    <div class="col-sm-9">
+			    	<input type="text" class="form-control" ms-duplex="@officeUnit" placeholder="" ms-attr="{disabled:@disabled}" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-3 control-label">主要成就</label>
+			    <div class="col-sm-9">
+			    	<input type="text" class="form-control" ms-duplex="@achieve" placeholder="" ms-attr="{disabled:@disabled}" />
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-3 control-label">中文介绍</label>
+			    <div class="col-sm-9">
+			    	<textarea class="form-control" rows="3" ms-duplex="@cnIntroduce" placeholder="介绍你自己" ms-attr="{disabled:@disabled}" ></textarea>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <label for="inputPassword3" class="col-sm-3 control-label">英文介绍</label>
+			    <div class="col-sm-9">
+			    	<textarea class="form-control" rows="3" ms-duplex="@usIntroduce" placeholder="" ms-attr="{disabled:@disabled}" ></textarea>
+			    </div>
+			</div>
+			<div class="form-group from-group-authentication">
+			    <div class="col-sm-offset-3 col-sm-9">
+			    	<button type="button" ms-click="@updateUser" class="btn btn-default btn-danger">保存</button>
+			    </div>
+			</div>
+		</div>
+		<script src="../js/require.js" data-main="js/userInfoMine"></script>
+	</body>
+</html>

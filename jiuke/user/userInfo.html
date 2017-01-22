@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九科育英</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+	</head>
+	<body ms-controller="init" class="ms-controller">
+		<header>
+			<ul class="float-left">
+				<li class="pointer" :visible="@hide1" data-toggle="modal" data-target="#login">登录</li>
+				<li class="pointer" :visible="@hide1" data-toggle="modal" data-target="#register">注册</li>
+				<li class="pointer" :visible="@hide2">您好,{{@userName}}</li>
+				<li class="pointer" :visible="@hide2" ms-click="@loginOut">登出</li>
+			</ul>
+			<ul class="float-right">
+				<li class="pointer" :visible="@hide2" ms-click="@userInfo">个人中心</li>
+			</ul>
+		</header>
+		<div class="main_part_box1 bac1">
+			<div class="main-container">
+				<div class="main-contant">
+					<div class="search-module">
+						<div class="pic"><img src="../img/logo.png"/></div>
+						<div class="search">
+							<div class="input-group">
+						      	<div class="input-group-btn">
+							        <button type="button" class="btns dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							        	<span ms-text="@searchType">课程</span>
+							        	<span class="caret"></span>
+							        </button>
+							        <ul class="dropdown-menu">
+							          <li><a href="javascript:;" ms-click="@searchTypeChange('课程')">课程</a></li>
+							          <li><a href="javascript:;" ms-click="@searchTypeChange('教师')">教师</a></li>
+							        </ul>
+						      	</div>
+						      	<input type="text" class="form-con" placeholder="请输入你要搜索的内容" ms-duplex="@searchText">
+						      	<div class="input-group-btn">
+	        						<button type="button" class="btns-block dropdown-toggle" ms-click="@search">搜索</button>
+	      						</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sortitle-module">
+			<ul id="ul">
+				<li class="sort active" ms-click="@tab('../pc/index.html')">首页</li>
+				<li class="sort" ms-click="@tab('../pc/tabOne.html')">外教老师</li>
+				<li class="sort" ms-click="@tab('../pc/tabTwo.html')">拓展课程</li>
+				<li class="sort" ms-click="@tab('../pc/tabThree.html')">精品课程</li>
+				<li class="sort" ms-click="@tab('../pc/tabFour.html')">新闻中心</li>
+				<li class="sort" ms-click="@tab('../pc/tabFive.html')">联系我们</li>
+			</ul>
+		</div>
+		
+		<div class="sort-module">
+			<div class="userInfo_header">
+				<img ms-attr="{src:@src}">
+				<span class="user-font1">{{@userName}}</span>
+				<span class="user-font2">普通用户</span>
+			</div>
+		</div>
+		<!--个人中心-->
+		<div class="sort-module">
+			<div class="userInfo_body_left">
+				<ul>
+					<li class="li active1" ms-click="@tab1($event,'userInfoApply.html',850)">已报名的课程 <span class="glyphicon glyphicon-chevron-right"></span></li>
+					<li class="li" ms-click="@tab1($event,'userInfoFree.html',850)">免费课程</li>
+					<li class="li" ms-click="@tab1($event,'userInfoQuestion.html',850)">我的发布</li>
+					<li class="li" ms-click="@tab1($event,'userInfoMine.html',850)">基本资料</li>
+					<li class="li" ms-click="@tab1($event,'userInfoSet.html',850)">账号设置</li>
+					<li class="li" ms-click="@tab1($event,'userInfoAuthentication.html',850)">用户认证</li>
+					<li class="li" ms-click="@tab1($event,'userInfoIssue.html',1300)">发布课程</li>
+					
+				</ul>
+			</div>
+			<div class="userInfo_body_right">
+				<iframe width="100%" :css="{height:@height}" ms-attr="{src:@iframe}" seamless frameborder="0" scrolling="no"></iframe>
+			</div>
+		</div>
+		<!-- login register Modal -->
+		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">登录</h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	<input type="text" class="form-control" ms-duplex="@loginName" placeholder="用户名">
+			        	<hr />
+			        	<input type="password" class="form-control" ms-duplex="@password" placeholder="密码">
+			     	</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-block btn-primary" ms-click="@login">登录</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+		    	<div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        	<h4 class="modal-title">注册</h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	<input type="text" class="form-control" ms-duplex="@loginName" placeholder="手机号">
+			        	<hr />
+			        	<input type="password" class="form-control" ms-duplex="@password" placeholder="密码(不少于6位)">
+			        	<hr />
+			        	<input type="text" class="form-control from-code" ms-duplex="@verificationCode" placeholder="验证码">
+			        	<button class="btn btn-default" ms-text="@code" ms-click="@send()"></button>
+			     	</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-block btn-primary" ms-click="@register">注册</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<iframe width="100%" style="border-top: 2px solid #ededed;" height="260px" src="../public/foot.html" seamless frameborder="0" scrolling="no"></iframe>
+		<script src="../js/require.js" data-main="js/userInfo"></script>
+	</body>
+</html>
